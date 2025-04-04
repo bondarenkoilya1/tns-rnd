@@ -6,12 +6,11 @@ import styled from "@emotion/styled";
 
 export const GlobalStyle = css`
   ${emotionReset}
-
   html {
     box-sizing: border-box;
     height: 100%;
     width: 100%;
-    background-color: #232b2b;
+    background-color: #f0f3f4;
   }
 
   body,
@@ -29,7 +28,7 @@ export const GlobalStyle = css`
 
   #root {
     font-family: "Inter", sans-serif;
-    color: #fff;
+    color: #000;
   }
 
   a {
