@@ -11,7 +11,7 @@ export const GlobalStyle = css`
     box-sizing: border-box;
     height: 100%;
     width: 100%;
-    background-color: #3a3434;
+    background-color: #232b2b;
   }
 
   body,
