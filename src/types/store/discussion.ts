@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const schema = z.object({
+export const discussionSchema = z.object({
   id: z.string().optional(),
   title: z.string().min(1, { message: "Укажите название опроса" }),
   description: z.string(),
@@ -10,12 +10,12 @@ const schema = z.object({
   endTime: z.string().min(1, { message: "Укажите дату окончания опроса" })
 });
 
-export type DiscussionProps = z.infer<typeof schema>;
+export type DiscussionFormFields = z.infer<typeof discussionSchema>;
 
 export type DiscussionsStoreProps = {
-  discussions: DiscussionProps[];
+  discussions: DiscussionFormFields[];
   isLoading: boolean;
   error: string | null;
-  setDiscussions: (discussion: DiscussionProps) => void;
+  setDiscussions: (discussion: DiscussionFormFields) => void;
   removeDiscussion: (id: string) => void;
 };

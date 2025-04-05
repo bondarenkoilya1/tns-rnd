@@ -1,15 +1,17 @@
 import React from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { FormStyled, FormTitleStyled } from "../styled";
+import { ErrorTextStyled } from "./styled.ts";
+
 import { APPLICATION_NAME } from "../../../constants";
+import { useAuthStore } from "../../../store/useAuthStore.ts";
+import type { FormTypes } from "../../../types";
 import { ButtonComponent, Input } from "../../ui";
 import { SuggestLoginForm, SuggestRegisterForm } from "../index";
-
-import type { FormTypes } from "../../../types";
-import { z } from "zod";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useAuthStore } from "../../../store/useAuthStore.ts";
-import { ErrorTextStyled } from "./styled.ts";
 
 const renderSuggestForm = (formType: FormTypes["formType"]) =>
   formType === "login" ? <SuggestRegisterForm /> : <SuggestLoginForm />;

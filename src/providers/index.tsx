@@ -1,6 +1,8 @@
 import { RouterProvider } from "react-router-dom";
-import { router } from "../router";
+
 import { ThemeProvider } from "@emotion/react";
+
+import { router } from "../router";
 import { defaultTheme } from "../themes";
 
 export const Providers = () => {

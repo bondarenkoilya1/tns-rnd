@@ -1,11 +1,12 @@
 import { create } from "zustand";
-import { DiscussionProps, DiscussionsStoreProps } from "../types";
+
+import { DiscussionFormFields, DiscussionsStoreProps } from "../types";
 
 export const useDiscussionsStore = create<DiscussionsStoreProps>((set) => ({
   discussions: [],
   isLoading: false,
   error: null,
-  setDiscussions: (discussion: DiscussionProps) =>
+  setDiscussions: (discussion: DiscussionFormFields) =>
     set((state) => ({
       discussions: [...state.discussions, discussion]
     })),

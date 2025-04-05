@@ -1,4 +1,6 @@
-import { useState, useRef, useEffect, FC } from "react";
+import { FC, useEffect, useRef, useState } from "react";
+
+import { Box } from "@mui/material";
 
 import {
   UserVideoCameraBlankStyled,
@@ -6,8 +8,8 @@ import {
   UserVideoCaptionStyled,
   UserVideoContainerStyled
 } from "./styled";
+
 import { ButtonComponent } from "../Button";
-import { Box } from "@mui/material";
 
 type UserVideoProps = {
   videoRef: HTMLVideoElement | null;
