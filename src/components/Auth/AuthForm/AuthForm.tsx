@@ -15,9 +15,9 @@ const renderSuggestForm = (formType: FormTypes["formType"]) =>
   formType === "login" ? <SuggestRegisterForm /> : <SuggestLoginForm />;
 
 const schema = z.object({
-  email: z.string().email({ message: "Ваша электронная почта должна быть указана" }),
-  password: z.string().min(3, { message: "Пароль должен содержать как минимум 3 символа" }),
-  username: z.string().min(1, { message: "Поле с вашим именем пользователя должно быть заполнено" })
+  email: z.string().email({ message: "Укажите вашу электронную почту" }),
+  password: z.string().min(3, { message: "Ваш пароль должен содержать как минимум 3 символа" }),
+  username: z.string().min(1, { message: "Укажите желаемое имя пользователя" })
 });
 
 type FormFields = z.infer<typeof schema>;

@@ -5,12 +5,12 @@ import { ContainerStyled } from "../../../styled";
 export const Main = () => {
   return (
     <ContainerStyled style={{ marginTop: 100 }}>
-      <Box sx={{ marginTop: 10, display: "flex", justifyContent: "space-between", maxWidth: 320 }}>
+      <Box sx={{ marginTop: 10, display: "flex", justifyContent: "space-between", maxWidth: 560 }}>
         <Button variant="contained" href="/video-chat">
-          Join meeting
+          Присоединиться к конференции
         </Button>
         <Button variant="contained" sx={{ backgroundColor: "#e8792f" }}>
-          Create meeting
+          Создать конференцию
         </Button>
       </Box>
     </ContainerStyled>
