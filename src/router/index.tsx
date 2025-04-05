@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import { App } from "../App.tsx";
-import { Main, Login, Register, Conference } from "../pages";
+import { Main, Login, Register, Conference, Cabinet } from "../pages";
 
 export const router = createBrowserRouter([
   {
@@ -11,7 +11,8 @@ export const router = createBrowserRouter([
       { index: true, element: <Main /> },
       { element: <Login />, path: "login" },
       { element: <Register />, path: "register" },
-      { element: <Conference />, path: "video-chat" }
+      { element: <Conference />, path: "video-chat" },
+      { element: <Cabinet />, path: "cabinet" }
     ]
   }
 ]);
