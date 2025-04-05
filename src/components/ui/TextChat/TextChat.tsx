@@ -1,4 +1,4 @@
-import React, { FC, useRef } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import { Box } from "@mui/material";
 import { v4 as uuidv4 } from "uuid";
 import { Input } from "../Input";
@@ -10,6 +10,7 @@ import {
   TextChatStyled,
   TextChatTitleStyled
 } from "./styled";
+import { useChatMessagesStore } from "../../../store/useChatMessagesStore";
 
 type TextChatProps = {
   chatMessages: { sender: string; text: string }[];
@@ -18,6 +19,13 @@ type TextChatProps = {
 };
 
 export const TextChat: FC<TextChatProps> = ({ chatMessages, websocket, username }) => {
+  const { addChatMessage } = useChatMessagesStore();
+
+  useEffect(() => {
+    addChatMessage("Mihel", "Hi, amigo");
+    addChatMessage("Артем", "Привет");
+  }, []);
+
   const chatInputRef = useRef<HTMLInputElement>(null);
 
   const sendChatMessage = () => {
