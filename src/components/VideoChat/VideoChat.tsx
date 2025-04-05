@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { TextChat } from "../ui";
+import { TextChat, UserVideo } from "../ui";
 import { useChatMessagesStore } from "../../store";
 
 export const VideoChat = () => {
@@ -23,8 +23,8 @@ export const VideoChat = () => {
     const finalUsername = username?.trim() || "Анонимный пользователь";
     setUsername(finalUsername);
 
-    const protocol = location.protocol === "https:" ? "wss" : "ws";
-    const websocketUrl = `${protocol}://${location.host}/websocket?room=${encodeURIComponent(room)}`;
+    const API_URL = "3449009-eq23140.twc1.net";
+    const websocketUrl = `wss://${API_URL}/websocket?room=${encodeURIComponent(room)}`;
     startConnection(websocketUrl, finalUsername);
   };
 
@@ -139,7 +139,7 @@ export const VideoChat = () => {
       <button onClick={joinRoom}>Join</button>
 
       <h3>Local Video</h3>
-      <video ref={localVideoRef} width="160" height="120" autoPlay muted />
+      <UserVideo videoRef={localVideoRef} username={username} />
 
       <h3>Remote Video</h3>
       <div ref={remoteVideosRef} />

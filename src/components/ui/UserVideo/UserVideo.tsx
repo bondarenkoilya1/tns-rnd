@@ -10,12 +10,11 @@ import { ButtonComponent } from "../Button";
 import { Box } from "@mui/material";
 
 type UserVideoProps = {
+  videoRef: HTMLVideoElement | null;
   username?: string;
 };
 
-export const UserVideo: FC<UserVideoProps> = ({ username }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
+export const UserVideo: FC<UserVideoProps> = ({ videoRef, username }) => {
   const [mediaStream, setMediaStream] = useState<MediaStream | null>(null);
 
   const startUserVideo = async () => {
@@ -55,10 +54,13 @@ export const UserVideo: FC<UserVideoProps> = ({ username }) => {
         <UserVideoCameraBlankStyled />
       ) : (
         <Box sx={{ position: "relative" }}>
-          <UserVideoCameraStyled ref={videoRef} autoPlay muted />
-          <UserVideoCaptionStyled>
-            {username || prompt("Ваше имя не было загружено. Введите его еще раз:")}
-          </UserVideoCaptionStyled>
+          <UserVideoCameraStyled
+            ref={videoRef}
+            autoPlay
+            muted
+            style={{ transform: "scaleX(-1)" }}
+          />
+          <UserVideoCaptionStyled>{username || "Анонимный пользователь"}</UserVideoCaptionStyled>
         </Box>
       )}
       <Box sx={{ marginTop: "20px", display: "flex", justifyContent: "center" }}>
