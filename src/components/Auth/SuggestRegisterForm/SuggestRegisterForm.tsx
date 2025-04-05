@@ -7,9 +7,9 @@ export const SuggestRegisterForm = () => {
   return (
     <FormStyled formStyle="secondary">
       <FormTextWrapperStyled>
-        <FormTextStyled marginRight>New to {APPLICATION_NAME}?</FormTextStyled>
+        <FormTextStyled marginRight>Впервые на {APPLICATION_NAME}?</FormTextStyled>
         <ButtonComponent color="primary" size="medium" variant="text" href="/register">
-          Create an account
+          Создайте аккаунт
         </ButtonComponent>
       </FormTextWrapperStyled>
       <ButtonComponent
@@ -17,7 +17,7 @@ export const SuggestRegisterForm = () => {
         size="medium"
         variant="outlined"
         style={{ width: "100%", marginTop: "6px" }}>
-        Log In as demo user
+        Войти в роли гостя
       </ButtonComponent>
     </FormStyled>
   );

@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { TextChat, UserVideo } from "../ui";
 import { useChatMessagesStore } from "../../store";
+import { VIDEO_CHAT_API_URL } from "../../config";
 
 export const VideoChat = () => {
   const [room, setRoom] = useState<string | null>(null);
@@ -23,8 +24,7 @@ export const VideoChat = () => {
     const finalUsername = username?.trim() || "Анонимный пользователь";
     setUsername(finalUsername);
 
-    const API_URL = "3449009-eq23140.twc1.net";
-    const websocketUrl = `wss://${API_URL}/websocket?room=${encodeURIComponent(room)}`;
+    const websocketUrl = `wss://${VIDEO_CHAT_API_URL}/websocket?room=${encodeURIComponent(room)}`;
     startConnection(websocketUrl, finalUsername);
   };
 

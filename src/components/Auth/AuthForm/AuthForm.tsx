@@ -29,7 +29,7 @@ export const AuthForm: React.FC<FormTypes> = ({ formType }) => {
       {renderTitle(formType)}
       <FormStyled formStyle="primary" style={{ marginBottom: "28px" }} onSubmit={handleSubmit}>
         <Input
-          label="Email"
+          label="Электронная почта"
           slotProps={{
             inputLabel: {
               shrink: true
@@ -41,18 +41,33 @@ export const AuthForm: React.FC<FormTypes> = ({ formType }) => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <Input
-          label="Password"
+          label="Пароль"
           slotProps={{
             inputLabel: {
               shrink: true
             }
           }}
-          placeholder="Must be at least 3 characters"
+          placeholder="Введите как минимум 3 символа"
           fullWidth
           sx={{ marginTop: "46px" }}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {formType === "register" && (
+          <Input
+            label="Ваше имя"
+            slotProps={{
+              inputLabel: {
+                shrink: true
+              }
+            }}
+            placeholder="Александр Григорьевич"
+            fullWidth
+            sx={{ marginTop: "46px" }}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        )}
         {renderButton(formType)}
       </FormStyled>
       {renderSuggestForm(formType)}
@@ -68,8 +83,8 @@ function renderTitle(formType: FormTypes["formType"]) {
   return (
     <FormTitleStyled>
       {formType === "login"
-        ? `Log in to ${APPLICATION_NAME}`
-        : `Create an account in ${APPLICATION_NAME}`}
+        ? `Войдите на сайт ${APPLICATION_NAME}`
+        : `Создайте аккаунт на сайте ${APPLICATION_NAME}`}
     </FormTitleStyled>
   );
 }
@@ -82,7 +97,7 @@ function renderButton(formType: FormTypes["formType"]) {
       variant="contained"
       style={{ width: "100%", marginTop: "28px" }}
       type="submit">
-      {formType === "login" ? "Log in" : "Create an account"}
+      {formType === "login" ? "Войти" : "Создать аккаунт"}
     </ButtonComponent>
   );
 }
