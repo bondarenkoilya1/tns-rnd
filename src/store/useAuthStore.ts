@@ -13,7 +13,7 @@ type useAuthStoreProps = {
   error: string | null;
   success: boolean;
   setField: <K extends keyof UserProps>(field: K, value: UserProps[K]) => void;
-  register: () => Promise<void>;
+  registerUser: () => Promise<void>;
 };
 
 export const useAuthStore = create<useAuthStoreProps>((set, get) => ({
@@ -30,25 +30,25 @@ export const useAuthStore = create<useAuthStoreProps>((set, get) => ({
       userData: { ...state.userData, [field]: value }
     }));
   },
-  register: async () => {
+  registerUser: async () => {
+    const { email, password, username } = get().userData;
     set({ isLoading: true, error: null, success: false });
-    const { userData } = get();
 
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData)
+      body: JSON.stringify({ username, email, password })
     };
 
     try {
-      const response = await fetchItem<{ token: string }>("/register", requestOptions);
+      const response = await fetchItem<{ token: string }>("/register/", requestOptions);
 
-      if (!response.ok) throw new Error("Ошибка регистрации");
+      if (!response.ok) throw new Error("Ошибка регистрации. Попробуйте сначала");
 
-      set({ success: true, userData: { username: "", email: "", password: "" } });
+      set({ success: true, userData: { email: "", password: "", username: "" } });
       location.href = "/";
     } catch (error: any) {
-      set({ error: error.message || "Неизвестная ошибка" });
+      set({ error: error.message || "Внезапная ошибка. Попробуйте сначала" });
     } finally {
       set({ isLoading: false });
     }
