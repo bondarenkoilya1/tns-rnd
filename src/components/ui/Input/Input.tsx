@@ -8,6 +8,7 @@ export const Input: FC<TextFieldProps> = ({
   onChange,
   disabled,
   placeholder,
+  ref,
   ...rest
 }) => {
   return (
@@ -18,6 +19,7 @@ export const Input: FC<TextFieldProps> = ({
       onChange={onChange}
       disabled={disabled}
       placeholder={placeholder}
+      ref={ref}
       {...rest}
     />
   );

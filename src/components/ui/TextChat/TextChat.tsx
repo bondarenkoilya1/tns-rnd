@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import { v4 as uuidv4 } from "uuid";
 import { Input } from "../Input";
@@ -10,7 +10,7 @@ import {
   TextChatStyled,
   TextChatTitleStyled
 } from "./styled";
-import { useChatMessagesStore } from "../../../store/useChatMessagesStore";
+import { useChatMessagesStore } from "../../../store";
 
 type TextChatProps = {
   chatMessages: { sender: string; text: string }[];
@@ -20,26 +20,27 @@ type TextChatProps = {
 
 export const TextChat: FC<TextChatProps> = ({ chatMessages, websocket, username }) => {
   const { addChatMessage } = useChatMessagesStore();
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     addChatMessage("Mihel", "Hi, amigo");
     addChatMessage("Артем", "Привет");
   }, []);
 
-  const chatInputRef = useRef<HTMLInputElement>(null);
-
   const sendChatMessage = () => {
-    const message = chatInputRef.current?.value.trim();
+    const message = inputValue;
     if (!message || !websocket || websocket.readyState !== WebSocket.OPEN) return;
 
-    websocket.send(
-      JSON.stringify({ event: "chat", sender: username || "Анонимный пользователь", text: message })
-    );
-    chatInputRef.current!.value = "";
+    websocket.send(JSON.stringify({ event: "chat", sender: username, text: message }));
+    setInputValue("");
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") sendChatMessage();
+  };
+
+  const handleInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
   };
 
   return (
@@ -53,7 +54,12 @@ export const TextChat: FC<TextChatProps> = ({ chatMessages, websocket, username 
         ))}
       </TextChatMessagesListStyled>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Input ref={chatInputRef} type="text" onKeyDown={handleKeyPress} />
+        <Input
+          value={inputValue}
+          onChange={handleInputValue}
+          type="text"
+          onKeyDown={handleKeyPress}
+        />
         <ButtonComponent
           onClick={sendChatMessage}
           size="medium"
