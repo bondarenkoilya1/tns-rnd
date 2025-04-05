@@ -1,19 +1,20 @@
 import { useRef, useState } from "react";
-import { TextChat, UserVideo } from "../ui";
+import { ButtonComponent, Input, TextChat } from "../ui";
 import { useChatMessagesStore } from "../../store";
 import { VIDEO_CHAT_API_URL } from "../../config";
+import { VideoChatInputsContainer, VideoChatStyled, VideoChatTitleStyled } from "./styled.ts";
+import { ContainerStyled } from "../../../styled.ts";
+import { FormControl } from "@mui/material";
 
 export const VideoChat = () => {
   const [room, setRoom] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [websocket, setWebsocket] = useState<WebSocket | null>(null);
   const [peerConnection, setPeerConnection] = useState<RTCPeerConnection | null>(null);
+  const { chatMessages, addChatMessage } = useChatMessagesStore();
 
   const localVideoRef = useRef<HTMLVideoElement | null>(null);
   const remoteVideosRef = useRef<HTMLDivElement | null>(null);
-
-  // zustand
-  const { chatMessages, addChatMessage } = useChatMessagesStore();
 
   const joinRoom = () => {
     if (!room?.trim()) {
@@ -122,29 +123,53 @@ export const VideoChat = () => {
   }
 
   return (
-    <div style={{ padding: 20 }}>
-      <h3>Join Room</h3>
-      <input
-        value={room || ""}
-        onChange={(e) => setRoom(e.target.value)}
-        placeholder="Enter room name"
-        style={{ marginRight: 10 }}
-      />
-      <input
-        value={username || ""}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Your name"
-        style={{ marginRight: 10 }}
-      />
-      <button onClick={joinRoom}>Join</button>
-
-      <h3>Local Video</h3>
-      <UserVideo videoRef={localVideoRef} username={username} />
-
-      <h3>Remote Video</h3>
-      <div ref={remoteVideosRef} />
-
-      <TextChat chatMessages={chatMessages} websocket={websocket} username={username} />
-    </div>
+    <VideoChatStyled>
+      <ContainerStyled>
+        <VideoChatTitleStyled>
+          Я хочу <span>присоединится</span> к комнате:
+        </VideoChatTitleStyled>
+        <FormControl sx={{ marginTop: "50px", width: "40%" }}>
+          <VideoChatInputsContainer>
+            <Input
+              value={room}
+              placeholder="vc4zas%#askqsd123vc4zas%#askqqsd3"
+              label="С идентификатором"
+              onChange={(e) => setRoom(e.target.value)}
+              slotProps={{
+                inputLabel: {
+                  shrink: true
+                }
+              }}
+              sx={{ width: "49%" }}
+            />
+            <Input
+              value={username}
+              placeholder="Максим Сергеевич"
+              label="Под именем"
+              onChange={(e) => setUsername(e.target.value)}
+              slotProps={{
+                inputLabel: {
+                  shrink: true
+                }
+              }}
+              sx={{ width: "49%" }}
+            />
+          </VideoChatInputsContainer>
+          <ButtonComponent
+            onClick={joinRoom}
+            color="primary"
+            size="medium"
+            variant="contained"
+            style={{ width: "50%", margin: "20px auto 0 auto" }}>
+            Присоедениться
+          </ButtonComponent>
+        </FormControl>
+        {/*<h3>Local Video</h3>*/}
+        {/*<UserVideo videoRef={localVideoRef} username={username} />*/}
+        {/*<h3>Remote Video</h3>*/}
+        {/*<div ref={remoteVideosRef} />*/}
+        <TextChat chatMessages={chatMessages} websocket={websocket} username={username} />
+      </ContainerStyled>
+    </VideoChatStyled>
   );
 };

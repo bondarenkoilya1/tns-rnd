@@ -12,13 +12,6 @@ export const SuggestRegisterForm = () => {
           Создайте аккаунт
         </ButtonComponent>
       </FormTextWrapperStyled>
-      <ButtonComponent
-        color="primary"
-        size="medium"
-        variant="outlined"
-        style={{ width: "100%", marginTop: "6px" }}>
-        Войти в роли гостя
-      </ButtonComponent>
     </FormStyled>
   );
 };

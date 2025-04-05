@@ -1,1 +1,1 @@
-export const APPLICATION_NAME = "APPLICATION_NAME";
+export const APPLICATION_NAME = "ТНС Энерго";

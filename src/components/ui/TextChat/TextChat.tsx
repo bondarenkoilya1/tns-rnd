@@ -4,10 +4,14 @@ import { v4 as uuidv4 } from "uuid";
 import { Input } from "../Input";
 import { ButtonComponent } from "../Button";
 import {
+  TextChatContainerStyled,
+  TextChatContentStyled,
+  TextChatFooterStyled,
   TextChatHelperTextStyled,
   TextChatMessagesListStyled,
   TextChatMessageStyled,
   TextChatStyled,
+  TextChatTitleContainerStyled,
   TextChatTitleStyled
 } from "./styled";
 import { useChatMessagesStore } from "../../../store";
@@ -45,32 +49,43 @@ export const TextChat: FC<TextChatProps> = ({ chatMessages, websocket, username 
 
   return (
     <TextChatStyled>
-      <TextChatTitleStyled>Начните общаться здесь</TextChatTitleStyled>
-      <TextChatMessagesListStyled>
-        {chatMessages.map((message) => (
-          <TextChatMessageStyled key={uuidv4()}>
-            <span>{message.sender}:</span> {message.text}
-          </TextChatMessageStyled>
-        ))}
-      </TextChatMessagesListStyled>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Input
-          value={inputValue}
-          onChange={handleInputValue}
-          type="text"
-          onKeyDown={handleKeyPress}
-        />
-        <ButtonComponent
-          onClick={sendChatMessage}
-          size="medium"
-          variant="contained"
-          color="primary">
-          Send
-        </ButtonComponent>
-      </Box>
-      <TextChatHelperTextStyled>
-        Вы отображаетесь как <span>{username ? username : "Анонимный пользователь"}</span>
-      </TextChatHelperTextStyled>
+      <TextChatContainerStyled>
+        <TextChatContentStyled>
+          <TextChatTitleContainerStyled>
+            <TextChatTitleStyled>Начните общаться здесь</TextChatTitleStyled>
+          </TextChatTitleContainerStyled>
+          <TextChatMessagesListStyled>
+            {chatMessages.map((message) => (
+              <TextChatMessageStyled key={uuidv4()}>
+                <span>{message.sender}:</span> {message.text}
+              </TextChatMessageStyled>
+            ))}
+          </TextChatMessagesListStyled>
+        </TextChatContentStyled>
+        <TextChatFooterStyled>
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Input
+              value={inputValue}
+              onChange={handleInputValue}
+              type="text"
+              placeholder="Андрей Анатольевич, у вас выключен звук!"
+              onKeyDown={handleKeyPress}
+              style={{ width: "70%" }}
+            />
+            <ButtonComponent
+              onClick={sendChatMessage}
+              size="medium"
+              variant="contained"
+              color="primary"
+              style={{ width: "25%" }}>
+              Написать
+            </ButtonComponent>
+          </Box>
+          <TextChatHelperTextStyled>
+            Вы отображаетесь как <span>{username ? username : "Анонимный пользователь"}</span>
+          </TextChatHelperTextStyled>
+        </TextChatFooterStyled>
+      </TextChatContainerStyled>
     </TextChatStyled>
   );
 };
