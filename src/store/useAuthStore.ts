@@ -1,20 +1,7 @@
 import { create } from "zustand";
+
 import { fetchItem } from "../api";
-
-type UserProps = {
-  username: string;
-  email: string;
-  password: string;
-};
-
-type useAuthStoreProps = {
-  userData: UserProps;
-  isLoading: boolean;
-  error: string | null;
-  success: boolean;
-  setField: <K extends keyof UserProps>(field: K, value: UserProps[K]) => void;
-  registerUser: () => Promise<void>;
-};
+import { useAuthStoreProps } from "../types";
 
 export const useAuthStore = create<useAuthStoreProps>((set, get) => ({
   userData: {

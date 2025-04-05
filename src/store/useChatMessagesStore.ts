@@ -1,14 +1,6 @@
 import { create } from "zustand";
 
-type ChatMessageProps = {
-  sender: string;
-  text: string;
-};
-
-type ChatMessagesStoreProps = {
-  chatMessages: ChatMessageProps[];
-  addChatMessage: (sender: string, text: string) => void;
-};
+import { ChatMessagesStoreProps } from "../types";
 
 export const useChatMessagesStore = create<ChatMessagesStoreProps>((set) => ({
   chatMessages: [],

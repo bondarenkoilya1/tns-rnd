@@ -1,10 +1,13 @@
 import { useRef, useState } from "react";
-import { ButtonComponent, Input, TextChat } from "../ui";
-import { useChatMessagesStore } from "../../store";
-import { VIDEO_CHAT_API_URL } from "../../config";
-import { VideoChatInputsContainer, VideoChatStyled, VideoChatTitleStyled } from "./styled.ts";
-import { ContainerStyled } from "../../../styled.ts";
+
 import { FormControl } from "@mui/material";
+
+import { ContainerStyled } from "../../../styled.ts";
+import { VideoChatInputsContainer, VideoChatStyled, VideoChatTitleStyled } from "./styled.ts";
+
+import { VIDEO_CHAT_API_URL } from "../../config";
+import { useChatMessagesStore } from "../../store";
+import { ButtonComponent, Input, TextChat } from "../ui";
 
 export const VideoChat = () => {
   const [room, setRoom] = useState<string | null>(null);

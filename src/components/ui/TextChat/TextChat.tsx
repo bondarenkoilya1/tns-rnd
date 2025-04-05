@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from "react";
-import { Box } from "@mui/material";
 import { v4 as uuidv4 } from "uuid";
-import { Input } from "../Input";
-import { ButtonComponent } from "../Button";
+
+import { Box } from "@mui/material";
+
 import {
   TextChatContainerStyled,
   TextChatContentStyled,
@@ -14,7 +14,10 @@ import {
   TextChatTitleContainerStyled,
   TextChatTitleStyled
 } from "./styled";
+
 import { useChatMessagesStore } from "../../../store";
+import { ButtonComponent } from "../Button";
+import { Input } from "../Input";
 
 type TextChatProps = {
   chatMessages: { sender: string; text: string }[];

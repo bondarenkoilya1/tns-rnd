@@ -1,7 +1,9 @@
-import { ButtonComponent } from "../ui";
-import { ContainerStyled } from "../../../styled";
 import { Box } from "@mui/material";
+
+import { ContainerStyled } from "../../../styled";
 import { HeaderStyled } from "./styled.ts";
+
+import { ButtonComponent } from "../ui";
 
 export const Header = () => {
   return (

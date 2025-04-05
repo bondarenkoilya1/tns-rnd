@@ -1,8 +1,10 @@
-import { ContainerStyled } from "../../../styled";
-import { Discussion } from "../../components/ui/Discussion";
-import { v4 as uuidv4 } from "uuid";
-import { useDiscussionsStore } from "../../store";
 import { useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
+
+import { ContainerStyled } from "../../../styled";
+
+import { Discussion } from "../../components/ui/Discussion";
+import { useDiscussionsStore } from "../../store";
 
 export const Cabinet = () => {
   const { discussions, setDiscussions } = useDiscussionsStore();

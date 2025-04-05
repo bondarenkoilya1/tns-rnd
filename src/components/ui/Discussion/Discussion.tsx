@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { DiscussionProps } from "../../../types";
 
 export const Discussion: FC<DiscussionProps> = ({ title, description, votingType, endTime }) => {
