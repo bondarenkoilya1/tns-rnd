@@ -12,6 +12,7 @@ import { useAuthStore } from "../../../store/useAuthStore.ts";
 import type { FormTypes } from "../../../types";
 import { ButtonComponent, Input } from "../../ui";
 import { SuggestLoginForm, SuggestRegisterForm } from "../index";
+import { useNavigate } from "react-router-dom";
 
 const renderSuggestForm = (formType: FormTypes["formType"]) =>
   formType === "login" ? <SuggestRegisterForm /> : <SuggestLoginForm />;
@@ -25,6 +26,8 @@ const schema = z.object({
 type FormFields = z.infer<typeof schema>;
 
 export const AuthForm: React.FC<FormTypes> = ({ formType }) => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -34,16 +37,21 @@ export const AuthForm: React.FC<FormTypes> = ({ formType }) => {
     resolver: zodResolver(schema)
   });
 
-  const { registerUser, setField } = useAuthStore();
+  const { registerUser, loginUser, setField } = useAuthStore();
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
       setField("email", data.email);
       setField("password", data.password);
-      setField("username", data.username);
+      data.username && setField("username", data.username);
 
       if (formType === "register") {
         await registerUser();
+        navigate("/");
+      } else {
+        // temporary logic doesn't work because form doesn't submit
+        await loginUser();
+        navigate("/");
       }
     } catch (error: any) {
       setError("root", { message: error.message });
