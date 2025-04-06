@@ -11,6 +11,10 @@ export const VideoChat = () => {
   const [room, setRoom] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
 
+  const joinRoom = () => {
+    location.href = "https://3449009-eq23140.twc1.net";
+  };
+
   return (
     <VideoChatStyled>
       <ContainerStyled>
@@ -45,6 +49,7 @@ export const VideoChat = () => {
             />
           </VideoChatInputsContainer>
           <ButtonComponent
+            onClick={joinRoom}
             color="primary"
             size="medium"
             variant="contained"
