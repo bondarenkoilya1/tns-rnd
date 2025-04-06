@@ -1,6 +1,7 @@
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 
 import { ContainerStyled } from "../../../styled";
+import { ButtonComponent } from "../../components";
 
 export const Main = () => {
   return (
@@ -15,12 +16,16 @@ export const Main = () => {
           borderRadius: " 6px",
           padding: "30px 50px"
         }}>
-        <Button variant="contained" href="/video-chat">
+        <ButtonComponent variant="contained" size="medium" href="/video-chat" color="primary">
           Присоединиться к конференции
-        </Button>
-        <Button variant="contained" sx={{ backgroundColor: "#e8792f" }} href="/create-conference">
+        </ButtonComponent>
+        <ButtonComponent
+          variant="contained"
+          href="/create-conference"
+          color="warning"
+          size="medium">
           Создать конференцию
-        </Button>
+        </ButtonComponent>
       </Box>
     </ContainerStyled>
   );
