@@ -1,5 +1,7 @@
 import { useState } from "react";
+
 import { FormControl } from "@mui/material";
+
 import { ContainerStyled } from "../../../../styled";
 import {
   CreateConferenceInputsContainer,
@@ -7,10 +9,10 @@ import {
   CreateConferenceTitleStyled
 } from "./styled";
 
+import { fetchItem } from "../../../api";
+import { VIDEO_CHAT_API_URL } from "../../../config";
 import { ButtonComponent } from "../Button";
 import { Input } from "../Input";
-import { fetchItem } from "../../../api";
-import { USER_API_URL, VIDEO_CHAT_API_URL } from "../../../config";
 
 export const CreateConference = () => {
   const [room, setRoom] = useState("");

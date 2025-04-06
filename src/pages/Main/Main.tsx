@@ -4,8 +4,17 @@ import { ContainerStyled } from "../../../styled";
 
 export const Main = () => {
   return (
-    <ContainerStyled style={{ marginTop: 100 }}>
-      <Box sx={{ marginTop: 10, display: "flex", justifyContent: "space-between", maxWidth: 560 }}>
+    <ContainerStyled style={{ marginTop: "50px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          maxWidth: 700,
+          backgroundColor: "#f7fafd",
+          border: "1px solid #bec3cb",
+          borderRadius: " 6px",
+          padding: "30px 50px"
+        }}>
         <Button variant="contained" href="/video-chat">
           Присоединиться к конференции
         </Button>

@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
 import { fetchItem } from "../api";
-import { useAuthStoreProps } from "../types";
 import { USER_API_URL } from "../config";
+import { useAuthStoreProps } from "../types";
 
 export const useAuthStore = create<useAuthStoreProps>((set, get) => ({
   userData: {

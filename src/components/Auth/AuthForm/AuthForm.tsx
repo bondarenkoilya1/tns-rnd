@@ -1,5 +1,6 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,7 +13,6 @@ import { useAuthStore } from "../../../store/useAuthStore.ts";
 import type { FormTypes } from "../../../types";
 import { ButtonComponent, Input } from "../../ui";
 import { SuggestLoginForm, SuggestRegisterForm } from "../index";
-import { useNavigate } from "react-router-dom";
 
 const renderSuggestForm = (formType: FormTypes["formType"]) =>
   formType === "login" ? <SuggestRegisterForm /> : <SuggestLoginForm />;
