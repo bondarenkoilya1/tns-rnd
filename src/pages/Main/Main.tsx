@@ -9,7 +9,7 @@ export const Main = () => {
         <Button variant="contained" href="/video-chat">
           Присоединиться к конференции
         </Button>
-        <Button variant="contained" sx={{ backgroundColor: "#e8792f" }}>
+        <Button variant="contained" sx={{ backgroundColor: "#e8792f" }} href="/create-conference">
           Создать конференцию
         </Button>
       </Box>

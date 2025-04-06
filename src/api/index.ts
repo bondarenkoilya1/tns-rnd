@@ -1,7 +1,9 @@
-import { USER_API_URL } from "../config";
-
-export async function fetchItem<T>(url: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(`${USER_API_URL}${url}`, options);
+export async function fetchItem<T>(
+  baseUrl: string,
+  url: string,
+  options?: RequestInit
+): Promise<T> {
+  const response = await fetch(`${baseUrl}${url}`, options);
 
   if (!response.ok) {
     throw new Error(`Network response was not ok. Response status: ${response.status}`);

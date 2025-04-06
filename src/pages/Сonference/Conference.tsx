@@ -1,5 +1,10 @@
-import { VideoChat } from "../../components";
+import { VideoChat, MeetingList } from "../../components";
 
 export const Conference = () => {
-  return <VideoChat />;
+  return (
+    <>
+      <MeetingList />
+      <VideoChat />
+    </>
+  );
 };

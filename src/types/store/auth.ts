@@ -1,5 +1,5 @@
 export type UserProps = {
-  username: string;
+  username?: string;
   email: string;
   password: string;
 };
@@ -11,4 +11,5 @@ export type useAuthStoreProps = {
   success: boolean;
   setField: <K extends keyof UserProps>(field: K, value: UserProps[K]) => void;
   registerUser: () => Promise<void>;
+  loginUser: () => Promise<void>;
 };
