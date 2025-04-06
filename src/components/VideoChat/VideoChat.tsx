@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { FormControl } from "@mui/material";
 
@@ -11,12 +10,6 @@ import { ButtonComponent, Input } from "../ui";
 export const VideoChat = () => {
   const [room, setRoom] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
-
-  const navigate = useNavigate();
-
-  const joinRoom = (roomUrl: string) => {
-    navigate(roomUrl);
-  };
 
   return (
     <VideoChatStyled>
@@ -52,7 +45,6 @@ export const VideoChat = () => {
             />
           </VideoChatInputsContainer>
           <ButtonComponent
-            onClick={joinRoom("/")}
             color="primary"
             size="medium"
             variant="contained"
