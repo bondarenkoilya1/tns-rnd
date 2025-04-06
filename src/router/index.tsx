@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 
 import { App } from "../App.tsx";
 
-import { Cabinet, Conference, Login, Main, Register } from "../pages";
 import { CreateConference } from "../components/ui/CreateConference";
+import { Cabinet, Conference, Login, Main, Register } from "../pages";
 
 export const router = createBrowserRouter([
   {

@@ -37,7 +37,7 @@ export const DiscussionForm: React.FC = () => {
   };
 
   return (
-    <div style={{ marginTop: "100px" }}>
+    <div style={{ marginTop: "100px", paddingBottom: "100px" }}>
       <h2 style={{ fontSize: "26px", marginBottom: "20px" }}>Создание нового опроса</h2>
       <form style={{ width: "500px" }} onSubmit={handleSubmit(onSubmit)}>
         <Input

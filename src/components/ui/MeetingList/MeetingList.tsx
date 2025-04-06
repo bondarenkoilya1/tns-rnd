@@ -1,11 +1,15 @@
 import { useEffect } from "react";
-import { TEMPORARY_ACCESS_TOKEN, USER_API_URL } from "../../../config";
+import { v4 as uuidv4 } from "uuid";
+
+import { Link, Typography } from "@mui/material";
+
+import { ContainerStyled } from "../../../../styled.ts";
+
 import { fetchItem } from "../../../api";
+import { TEMPORARY_ACCESS_TOKEN, USER_API_URL } from "../../../config";
 import { useMeetingListStore } from "../../../store";
 import { MeetingItemProps } from "../../../types";
-import { v4 as uuidv4 } from "uuid";
-import { Typography, Link } from "@mui/material";
-import { ContainerStyled } from "../../../../styled.ts";
+import { formatDate } from "../../../utils";
 
 export const MeetingList = () => {
   const { meetings, setMeetings } = useMeetingListStore();
@@ -33,21 +37,6 @@ export const MeetingList = () => {
 
     getMeetingList();
   }, [setMeetings]);
-
-  console.log(meetings);
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleString("ru-RU", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric"
-    });
-  };
 
   return (
     <ContainerStyled>

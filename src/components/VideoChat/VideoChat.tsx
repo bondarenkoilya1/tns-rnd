@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { FormControl } from "@mui/material";
 
 import { ContainerStyled } from "../../../styled.ts";
 import { VideoChatInputsContainer, VideoChatStyled, VideoChatTitleStyled } from "./styled";
 
 import { ButtonComponent, Input } from "../ui";
-import { useNavigate } from "react-router-dom";
 
 export const VideoChat = () => {
   const [room, setRoom] = useState<string | null>(null);

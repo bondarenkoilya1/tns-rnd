@@ -16,6 +16,14 @@ export const Header = () => {
           size="medium"
           href="/">
           Главная
+        </ButtonComponent>{" "}
+        <ButtonComponent
+          style={{ color: "#fff" }}
+          variant="text"
+          color="primary"
+          size="medium"
+          href="/cabinet">
+          Кабинет
         </ButtonComponent>
         <Box>
           <ButtonComponent
